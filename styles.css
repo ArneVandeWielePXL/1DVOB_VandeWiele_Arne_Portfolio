@@ -5,7 +5,6 @@
     font-weight: bold;
     font-style: normal;
 }
-
 @font-face {
     font-family: 'Gilroy';
     src: url('fonts/Gilroy-Regular.ttf') format('ttf'),
@@ -13,7 +12,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
 body {
     font-family: 'Gilroy', sans-serif;
     background-color: #fdf5e6;
@@ -21,7 +19,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
 header {
     display: flex;
     justify-content: space-between;
@@ -29,14 +26,12 @@ header {
     padding: 20px 108px;
     background-color: #F9F4EA;
 }
-
 header .logo {
     font-family: 'Viner Hand ITC', cursive;
     font-size: 48px;
     text-decoration: none;
     color: #333;
 }
-
 header .logo:hover {
     color: #f76a69;
 }
@@ -46,7 +41,6 @@ header .logo:hover {
     color: black; /* Zwarte kleur voor de tekst */
     text-decoration: none; /* Geen onderstreping */
 }
-
 .logo a:hover {
     color: #f76a69; /* Kleur bij hover */
 }
@@ -57,7 +51,6 @@ header nav ul {
     display: flex;
     gap: 3rem;
 }
-
 header nav ul li {
     display: inline;
 }
@@ -80,6 +73,17 @@ header nav ul li a:hover {
     }
 }
 /* ABOUTME section */
+.profile-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-image {
+    width: 80%;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .intro {
     display: flex;
     justify-content: space-between;
@@ -426,88 +430,74 @@ header nav ul li a:hover {
     font-size: 20px;
 }
 /* Media queries voor kleinere schermen zoals mobiele telefoons */
-@media (max-width: 768px) {
-    header {
+@media (max-width: 414px) {
+    .header {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    nav ul {
-        flex-direction: column;
-        width: 100%;
+    .header h1 {
+        font-size: 20px;
     }
 
-    nav ul li {
-        margin: 10px 0;
+    .header nav {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .intro {
+        flex-direction: column;
+        align-items: center;
     }
 
     .intro-text {
+        max-width: 100%;
         text-align: center;
-    }
-
-    .button-row {
-        width: 100%;
-        align-items: center;
-    }
-
-    .button {
-        width: 90%;
+        padding: 0 10px;
     }
 
     .intro-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .image-placeholder {
-        width: 90%;
-        height: auto;
-    }
-
-    .portfolio-header {
-        text-align: center;
-    }
-
-    .cards {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 90%;
-        margin: 10px 0;
-    }
-
-    .wpl-circles {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .wpl-circles .circle {
-        margin: 10px 0;
+        max-width: 100%;
+        margin-top: 20px;
     }
 
     .button-row {
         flex-direction: column;
         align-items: center;
+    }
+
+    .button-row .button {
+        margin-bottom: 10px;
+        width: 100%; /* Voeg deze regel toe */
+        text-align: center; /* Voeg deze regel toe */
     }
 
     .socials {
         display: flex;
         justify-content: center;
         width: 100%;
+        margin-top: 10px;
     }
 
-    .section-light, .section-dark {
-        padding: 10px;
+    .socials a {
+        margin: 0 10px;
     }
 
-    .slider-controls {
-        display: flex;
-        justify-content: center;
+    .portfolio-header {
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .portfolio-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .portfolio-item {
         width: 100%;
+        margin-bottom: 20px;
     }
 }
