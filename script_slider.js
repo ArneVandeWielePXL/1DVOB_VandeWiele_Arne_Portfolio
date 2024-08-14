@@ -1,21 +1,18 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slider img');
     let currentSlide = 0;
-    const slides = document.querySelectorAll(".slider img");
-    const totalSlides = slides.length;
 
-    document.querySelector(".next").addEventListener("click", function() {
-        slides[currentSlide].style.display = "none";
-        currentSlide = (currentSlide + 1) % totalSlides;
-        slides[currentSlide].style.display = "block";
+    function showSlide(index) {
+        slides[currentSlide].style.display = 'none';
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].style.display = 'block';
+    }
+
+    document.querySelector('.prev-slide').addEventListener('click', function() {
+        showSlide(currentSlide - 1);
     });
 
-    document.querySelector(".prev").addEventListener("click", function() {
-        slides[currentSlide].style.display = "none";
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        slides[currentSlide].style.display = "block";
-    });
-
-    document.querySelector(".pause").addEventListener("click", function() {
-        // Implement pause functionality if needed
+    document.querySelector('.next-slide').addEventListener('click', function() {
+        showSlide(currentSlide + 1);
     });
 });
