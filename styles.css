@@ -255,20 +255,90 @@ header nav ul li a:hover {
     justify-content: center;
     color: #ccc;
     font-size: 20px;
+    overflow: hidden; /* Zorgt ervoor dat de afbeelding binnen de container blijft */
+    border-radius: 10px; /* Maakt de randen licht afgerond */
 }
+.card .image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Zorgt ervoor dat de afbeelding volledig in de container past */
+}
+.card .content {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card .content p {
+    margin: 10px 0;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #333;
+}
+
 .portfolio-icons {
     display: flex;
     justify-content: center;
     gap: 105px; /* Aanpassen van de ruimte tussen de iconen */
     margin-top: 30px;
 }
+.read-more {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f76a69;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.read-more:hover {
+    background-color: #d6554f;
+}
+/* Hide the lightbox by default */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Black with opacity */
+}
+/* Style the lightbox image */
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+/* Add a close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
 
+/* Icon cards section */
 .icon-card {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .icon-circle {
     width: 106px;
     height: 106px;
@@ -313,12 +383,13 @@ header nav ul li a:hover {
     padding: 40px 0;
     text-align: center;
 }
-.wpl1 {
+
+.wpl1, .wpl2 {
     padding: 2rem 4rem;
     text-align: center;
 }
 
-.wpl1 h1, .wpl1 h2 {
+.wpl1 h1, .wpl1 h2, .wpl2 h1, .wpl2 h2 {
     margin: 0 0 9px 0;
 }
 
@@ -350,23 +421,16 @@ header nav ul li a:hover {
 .button {
     background-color: #f76a69;
     color: white;
-    padding: 15px 30px; /* Adjust padding as needed */
+    padding: 15px 30px;
     font-size: 22px;
     text-decoration: none;
     border-radius: 5px;
     display: inline-block;
     width: 250px;
     height: 50px;
-    line-height: 50px; /* Ensures text is vertically centered */
-}
-.wpl2 {
-    padding: 2rem 4rem;
-    text-align: center;
+    line-height: 50px;
 }
 
-.wpl2 h1, .wpl2 h2 {
-    margin: 0 0 9px 0;
-}
 .wpl-text {
     max-width: 800px;
     margin: 0 auto;
@@ -388,22 +452,18 @@ header nav ul li a:hover {
     font-size: 44px;
 }
 
-.slider-container {
-    position: relative;
-    width: 80%;
-    /*overflow: hidden;*/
-    margin: 0 auto;
-}
 /* Styles voor slider */
 .slider-container {
     position: relative;
     width: 80%;
-    margin: 0 auto;
-    margin-bottom: 50px;
+    margin: 0 auto 30px auto;
+    overflow: hidden;
 }
 
 .slider img {
     width: 100%;
+    max-height: 700px;
+    object-fit: cover;
     display: none;
 }
 
@@ -428,6 +488,36 @@ header nav ul li a:hover {
 #additional-content {
     padding: 20px 108px;
     font-size: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF6B6B;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #ff4949;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 80%;
+}
+
+.video-container video {
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 /* Media queries voor kleinere schermen zoals mobiele telefoons */
 @media (max-width: 414px) {
@@ -499,5 +589,28 @@ header nav ul li a:hover {
     .portfolio-item {
         width: 100%;
         margin-bottom: 20px;
+    }
+}
+@media (max-width: 1024px) {
+    .card {
+        flex: 0 1 calc(50% - 20px); /* 2 cards per rij */
+        max-width: calc(50% - 20px);
+        min-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 0 1 calc(100% - 20px); /* 1 card per rij */
+        max-width: calc(100% - 20px);
+        min-width: calc(100% - 20px);
+    }
+}
+
+@media (max-width: 414px) {
+    .card {
+        flex: 0 1 calc(100% - 20px); /* 1 card per rij op mobiele schermen */
+        max-width: calc(100% - 20px);
+        min-width: calc(100% - 20px);
     }
 }
